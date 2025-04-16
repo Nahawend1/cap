@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body { padding-top: 70px; }
+        .post-card { margin-bottom: 1rem; border: 1px solid #eee; }
+        .post-header { display: flex; align-items: flex-start; margin-bottom: 0.75rem; gap: 12px; }
+        .post-author-pic { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid #eee; background-color: #f8f9fa; }
+        .post-author-info { flex-grow: 1; line-height: 1.3; }
+        .post-author-name { font-weight: bold; margin-bottom: 0; font-size: 0.95rem; }
+        .post-author-username { color: #6c757d; font-size: 0.85rem; margin-bottom: 0; }
+        .post-timestamp { color: #6c757d; font-size: 0.8rem; margin-left: auto; flex-shrink: 0; white-space: nowrap; align-self: flex-start; padding-top: 2px;}
+        .post-content { margin-bottom: 1rem; }
+        .post-content h5 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .post-content p { font-size: 0.95rem; line-height: 1.5; white-space: pre-wrap; word-wrap: break-word; }
+        .post-actions { display: flex; justify-content: space-around; align-items: center; color: #6c757d; font-size: 0.85rem; padding-top: 0.75rem; margin-top: 0.5rem; border-top: 1px solid #eee; }
+        .post-actions .action-group { display: flex; align-items: center; gap: 0.3rem; }
+        .post-actions .action-icon { color: #6c757d; font-size: 1.1rem; transition: color 0.2s ease; vertical-align: middle; }
+        .like-button { cursor: pointer; background: none; border: none; padding: 0; display: inline-flex; align-items: center; color: #6c757d; }
+        .like-button:disabled { cursor: default; opacity: 0.6; }
+        .like-button .bi-heart-fill { display: none; }
+        .like-button .bi-heart { display: inline-block; }
+        .like-button.liked .bi-heart-fill { display: inline-block; color: #dc3545; }
+        .like-button.liked .bi-heart { display: none; }
+        .like-button:hover .bi-heart { color: #dc3545; }
+        .like-button.liked:hover .bi-heart-fill { color: #b02a37; }
+        .likes-count { margin-left: 0.2rem; vertical-align: middle; }
+        .post-actions form { margin: 0; }
+        .post-actions .btn-sm { padding: 0.1rem 0.4rem; }
+        .post-actions .btn-sm svg { vertical-align: middle; margin-bottom: 2px; }
+        .post-actions .btn-outline-danger:hover svg { color: white; }
+    </style>
+</head>
+<body class="container mt-4">
+
+    <%- include('partials/navbar', { page: 'posts' }) %>
+
+    <main class="pt-3">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Community Posts</h1>
+            <% if (user) { %> <a href="/posts/new" class="btn btn-primary">Create New Post</a> <% } else { %> <a href="/login?returnTo=/posts/new" class="btn btn-outline-primary">Log in to Post</a> <% } %>
+        </div>
+
+         <% if (typeof error !== 'undefined' && error) { %>
+            <div class="alert alert-warning"><%= error %></div>
+        <% } %>
+
+        <% if (posts && posts.length > 0) { %>
+            <% posts.forEach(function(post) { %>
+                <div class="card post-card" id="post-<%= post.id %>">
+                    <div class="card-body">
+                        <div class="post-header">
+                            <% if (post.authorProfilePicFilename) { %> <img src="/uploads/<%= post.authorProfilePicFilename %>" alt="<%= post.authorUsername %>'s profile picture" class="post-author-pic"> <% } else { %> <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#adb5bd" class="bi bi-person-circle post-author-pic" viewBox="0 0 16 16"> <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/> <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/> </svg> <% } %>
+                            <div class="post-author-info"> <p class="post-author-name"> <% if (post.authorFirstName || post.authorLastName) { %> <%= post.authorFirstName %> <%= post.authorLastName %> <% } else { %> <%= post.authorUsername %> <% } %> </p> <p class="post-author-username">@<%= post.authorUsername %></p> </div>
+                            <div class="post-timestamp"> <%= new Date(post.timestamp).toLocaleTimeString([], { year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute:'2-digit'}) %> </div>
+                        </div>
+                        <!-- content -->
+                        <div class="post-content"> <h5><%= post.title %></h5> <p><%- post.message.replace(/\n/g, '<br>') %></p> </div>
+                        <div class="post-actions">
+                             <!-- likes -->
+                            <div class="action-group"> <button class="like-button <%= (user && post.likes.includes(user.id)) ? 'liked' : '' %>" data-post-id="<%= post.id %>" title="Like/Unlike" <%= user ? '' : 'disabled' %>> <i class="bi bi-heart action-icon"></i> <i class="bi bi-heart-fill action-icon"></i> </button> <span class="likes-count" id="likes-count-<%= post.id %>"> <%= post.likes.length %> </span> </div>
+                             <!-- views -->
+                             <div class="action-group"> <i class="bi bi-eye-fill action-icon"></i> 
+                                <span><%= Array.isArray(post.viewedBy) ? post.viewedBy.length : 0 %></span>
+                                <span class="d-none d-sm-inline ms-1">views</span> 
+                             </div>
+                            <div class="action-group"> <% if (user && (user.id === post.authorId || isAdmin)) { %> <form action="/posts/<%= post.id %>/delete" method="POST" onsubmit="return confirm('Are you sure?');" class="d-inline"> <button type="submit" class="btn btn-sm text-danger p-0 border-0" title="Delete Post"> <i class="bi bi-trash3-fill action-icon"></i> </button> </form> <% } %> </div>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p class="alert alert-info">No posts yet. Be the first to create one!</p>
+        <% } %>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>
