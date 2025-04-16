@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of Palestine Timeline</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        body { padding-top: 70px; }
+        .timeline-container { position: relative; padding: 20px 0; }
+        .timeline-item { position: relative; margin-bottom: 50px; padding-left: 40px; }
+        .timeline-item::before { /* Circle */ content: ''; position: absolute; left: 0; top: 5px; width: 20px; height: 20px; border-radius: 50%; background-color: #6c757d; border: 3px solid #fff; box-shadow: 0 0 0 2px #6c757d; z-index: 1;}
+        .timeline-item::after { /* Line */ content: ''; position: absolute; left: 9px; top: 25px; width: 2px; height: calc(100% + 25px); background-color: #adb5bd; }
+        .timeline-item:last-child::after { display: none; }
+        .timeline-content { background: #f8f9fa; padding: 1.25rem; border-radius: .375rem; border: 1px solid #dee2e6; box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);}
+        .timeline-content img { max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: .25rem; }
+        .timeline-content h2 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+        .timeline-content h2 .year { font-weight: 600; display: block; font-size: 1.2rem; color: #495057;}
+        .timeline-content h2 .event-title { font-weight: 500; display: block; font-size: 1.2rem; margin-top: 0.2rem; }
+        .timeline-content p { font-size: 1rem; line-height: 1.6; }
+        @media (max-width: 768px) {
+            .timeline-item { padding-left: 30px; }
+            .timeline-item::before { width: 15px; height: 15px; left: 0; box-shadow: 0 0 0 1.5px #6c757d; }
+            .timeline-item::after { left: 6px; top: 20px; height: calc(100% + 30px); }
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/navbar', { page: 'timeline' }) %>
+
+    <main class="container mt-4">
+        <h1 class="display-4 text-center mb-5"> Timeline - <b>Brief</b> Palestinian History </h1>
+
+        <div class="timeline-container">
+            <!-- Balfour -->
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <img src="https://cdn.glitch.global/fc1f5b86-1bec-45c3-8173-cf4f62a73ef5/99775e59-0f9a-4014-8b4c-d6263fe73cff.image.png?v=1743932810217" style="max-width:600px; margin: left;" alt="Balfour declaration">
+                  <small>
+                    British soldiers patrol the streets of Jerusalem during a visit by Arthur James Balfour, a British Conservative politician, on April 2, 1925.
+                    [Topical Press Agency/Hulton Archive/Getty Images]
+                  </small>
+                  <br>
+                  <br>
+                    <h2> 
+                    <span class="year">1917</span> 
+                    <span class="event-title">Balfour Declaration</span> 
+                  </h2>
+                    <p>The Balfour Declaration was a public statement by the British government during WWI supporting a "national home for the Jewish people" in Palestine. The 
+                  declaration was signed by Arthur Balfour, a British foreign Secratary, who "offered sympathy" to the Jewish Zionist's aspriations. Zionism was a political
+                  colonial movement that emerged in <b>Europe</b> in the 19th century that sought to create a Jewish national home in Palestine, which was inhabited by
+                  Palestinians.
+                    <br> With the help of the British, Zionists were able to migrate Jews from Europe to inhabited Palestine. 
+                    <br>
+                    <small>@ProgressiveInternational</small>
+                  </p>
+                </div>
+            </div>
+            <!-- Nakba -->
+            <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src="https://cdn.glitch.global/fc1f5b86-1bec-45c3-8173-cf4f62a73ef5/49dfef48-397e-4e89-b81f-70368f0a8477.image.png?v=1743934739015" style="max-width:600px; margin: left;"alt="Nakba">
+                   <small> On May 15, 2017, Palestinians marked 69 years since the ethnic cleansing of Palestine [Reuters]</small>
+                   <br>
+                   <br>
+                     <h2> 
+                       <span class="year">1948</span>
+                       <span class="event-title">Nakba</span> 
+                   </h2>
+                    <p>The Nakba, <b>"Catastrophe"</b>, refers to the mass displacement and dispossession of Palestinians in 1948.
+                    In November 1947, the UN passed a resolution to expand Zionist territory from 6% currently conqured to 56% of historic Palestine.
+                    The Zionist movement launched 'Plan Dalet'to kick Palestinians by any means necessary, resulting in 80% of Palestinians colonized.
+                    <br>
+                    The State of Israel was declared on this territory on May 14th 1948
+                    <br>
+                    15,000 Palestinians were killed in the Nakba by Israel militias, who also,
+                    <li>expelled 750,000+ Palestinians</li>
+                    <li>destroyed 531 Palestinian villiages/towns/cities</li>
+                    <li>Committed up to 155 massacres</li>
+                     <br>
+                      The Nakba also refers to the <b>ongoing colonization of the remainder of Palestine</b>.
+                   </p>
+                   <small>@LetsTalkPalestine</small>
+                 </div>
+            </div>
+             <!-- Six-Day War -->
+             <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src="https://cdn.glitch.global/fc1f5b86-1bec-45c3-8173-cf4f62a73ef5/6a7e968d-9b54-4a99-855a-5a0d6afd2487.image.png?v=1744742904756" style="max-width:600px; margin: left;" alt="six-day war">
+                    <h2>
+                      <span class="year">1967</span> 
+                      <span class="event-title">Six-Day War</span>
+                   </h2>
+                    <p>
+                      Egypt, Syria, and Jordan rallied together against Israel when threats were made against them. Egypt believed that Arab 
+                      unification 
+                      Israel captured the Gaza Strip, the West Bank, East Jerusalem, Sinai Peninsula, and Golan Heights in this brief conflict
+                      
+                      
+                      
+                    </p>
+                 </div>
+            </div>
+             <!-- Oslo Accords -->
+             <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src="https://cdn.glitch.global/fc1f5b86-1bec-45c3-8173-cf4f62a73ef5/e779e921-7696-4e16-a3ad-fc24c4a4477d.image.png?v=1743938468140" style="max-width:600px; margin: left;"alt="Oslo Accords">
+                   <small>A demonstrator from Deir Jarir waves a Palestinian flag following a march against construction on Palestinian land 
+                     by residents of the Jewish settlement of Ofra, occupied West Bank, April 26, 2013. (Issam Rimawi/Flash90)</small>
+                   <br>
+                   <br>
+                    <h2> 
+                      <span class="year">1993</span>
+                      <span class="event-title">Oslo Accords</span>
+                   </h2>
+                    <p> The Oslo Accords are mulitple agreements between Israel and the PLO aiming to establish some sort of negotiations. 
+                   Within the agreements, Israel maintains control of the borders, security, and authority over imports/exports, and overall
+                  Palestinian connection with the outside world.
+                      <br>
+                  The Oslo Accords were established to be a framework for future negotiations, intending to last 5 years. 30 years later, a final agreement hasn't
+                  been reached and Israeli control is still in full force. 
+                    <br>
+                    <br>
+                  The Oslo Accords claims to give Palestinians a governing body with the 'Palestinian Authority', yet Israel has full authority,
+                  <br>
+                  <br>
+                  <b>"The Oslo Accords were never representative of the Palestinians people's demands... The Accords need to be dismantled
+                  and identified for what they truly are...a unilateral legitmation of illegal occupation" </b> <small>@LetsTalkPalestine</small>
+                   </p>
+                 </div>
+            </div>
+            <!-- Second Intifada -->
+             <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src="https://cdn.glitch.global/fc1f5b86-1bec-45c3-8173-cf4f62a73ef5/c551e18a-9445-43d8-8f12-e7a0f2d38d7c.image.png?v=1743934044396" style="max-width: 600px; margin: left;" alt="Second Intifada">
+                   <small>What began as a few hundred protesters throwing shoes at Sharon, police escort erupted into demonstrations across the Palestinian territories [GALLO/GETTY]</small>
+                    <h2> 
+                      <br>
+                      <span class="year">2000 - 2005</span> 
+                      <span class="event-title">Second Intifada</span> 
+                   </h2>
+                    <p> The Second Intifada, meaning the "uprising" in arabic, was the second mass Palestinian uprising against the Israeli occupation. It was sparked on September 28th 2000 when 
+                   Israeli politician Ariel Sharon, 1,000 armed Israeli soldiers, and police staged an "inprecedented, provactive visit to <b> Al Aqsa Mosque Compound</b> - 
+                  one of Islam's holiest sites, - where Ariel Sharons declared: "The Temple Mount is in our hands and will remain in our hands" 
+                      <br>
+                  Palestinians defended Jeruslaem from the settler army, on September 30th, a parallel uprising began in Gaza in support of these protesters, 
+                      <b>marking the Second Intifada</b>
+                      <br>
+                      4,000 to 5,000 Palestinians were killed during the Second Intifada
+                      <br>836 children killed
+                      <br>576 students killed 
+                      <br>8,600 imprisoned, 288 of them being children
+                      <br>3,530 disabled or maimed
+        
+                   </p>
+                 </div>
+            </div>
+            <!-- Gaza Withdrawal -->
+             <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src=""  style="max-width:600px; margin: left;"alt="withdrawal">
+                    <h2> 
+                      <span class="year">2005</span>
+                      <span class="event-title">Israeli Withdrawal from Gaza</span>
+                   </h2>
+                    <p>Israel unilaterally withdrew its forces and settlers from the Gaza Strip, though border control continued.</p>
+                 </div>
+            </div>
+            <!-- Gaza Conflict 2021 -->
+            <div class="timeline-item">
+                 <div class="timeline-content">
+                    <img src="" style="max-width:600px; margin: left;"alt="Gaza">
+                    <h2> 
+                      <span class="year">2021</span>
+                      <span class="event-title">Gaza Conflict</span>
+                   </h2>
+                    <p>Intense violence erupted between Israel and Hamas, marking one of the most severe conflicts in recent years.</p>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
